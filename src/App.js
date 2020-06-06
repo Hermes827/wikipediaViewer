@@ -31,7 +31,6 @@ class App extends React.Component {
     <h3 onClick={this.randomArticle}>Click here for a random article</h3>
     {(this.state.hasClickedButton ===true) ? <Searchbar toggle={this.toggleState}/> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
     <h3>Click icon to search</h3>
-    {console.log(this.state)}
     </div>
   );
 }
