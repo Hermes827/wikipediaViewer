@@ -1,4 +1,5 @@
 import React from 'react'
+import ArticleContainer from '../containers/articleContainer.js'
 
 class Searchbar extends React.Component {
 
@@ -17,20 +18,16 @@ class Searchbar extends React.Component {
     })
   }
 
-  executeSearch(){
-    // console.log(this.state.text)
-    // console.log("hello")
-    const weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=47.4797&lon=-122.2079&units=imperial&appid=2ebf31cbd8d1d525b4f75bedc92f60f0`;
-    fetch(weatherApi)
+  executeSearch(e){
+    e.preventDefault()
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${this.state.text}&exintro=&origin=*&prop=extracts%7Cpageimages&format=json`)
    .then(response => response.json())
    .then(data => {
-      console.log(data)
+    console.log(data)
      })
   }
 
-  //API not calling for some reason
-
-
+  //API not calling for some reason >> turns out I forgot to put in e.preventDefault
 
   //I just need to add the ability to interpolate the wiki api and this should work
   //perhaps use window.open function with the finished api?
@@ -41,6 +38,7 @@ class Searchbar extends React.Component {
       <form onSubmit={this.executeSearch}>
       <input type='text' name='text' value={this.state.text} onChange={this.captureText}/>
       <button onClick={this.toggleState}>cancel</button>
+      <ArticleContainer/>
       </form>
       </div>
     )
