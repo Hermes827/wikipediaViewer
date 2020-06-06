@@ -7,7 +7,8 @@ class Searchbar extends React.Component {
     super()
     this.state = {
       text: "",
-      apiData: ""
+      apiData: "",
+      didExecuteSearch: false
     }
     this.captureText = this.captureText.bind(this)
     this.executeSearch = this.executeSearch.bind(this)
@@ -21,26 +22,33 @@ class Searchbar extends React.Component {
 
   executeSearch(e){
     e.preventDefault()
+    //API not calling for some reason >> turns out I forgot to put in e.preventDefault
     fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${this.state.text}&exintro=&origin=*&prop=extracts%7Cpageimages&format=json`)
    .then(response => response.json())
    .then(data => {
-      const api = data.query.pages
-      this.random(api)
+      this.random(data.query.pages)
+      //for some reason I couldn't setstate using the data, it turns out that its probably related
+      //to the e.preventDefault, I found that by passing the data to a different function that im
+      //now able to setstate with the data
   })
   }
 
   random(api){
+    this.toggleState()
     this.setState({
-      apiData: api
+      apiData: api,
+      didExecuteSearch: true
     })
     console.log(this.state)
-
   }
 
-  //API not calling for some reason >> turns out I forgot to put in e.preventDefault
-
-  //I just need to add the ability to interpolate the wiki api and this should work
-  //perhaps use window.open function with the finished api?
+  renderArticleContainer(){
+    if(this.state.didExecuteSearch === true){
+      return (
+        <ArticleContainer apiData={this.state.apiData}/>
+      )
+    }
+  }
 
   render(){
     return (
@@ -49,9 +57,12 @@ class Searchbar extends React.Component {
       <input type='text' name='text' value={this.state.text} onChange={this.captureText}/>
       <button onClick={this.toggleState}>cancel</button>
       </form>
+      {this.renderArticleContainer()}
       </div>
     )
   }
 }
 
 export default Searchbar
+
+//e.preventDefault is preventing the togglestate function from working
