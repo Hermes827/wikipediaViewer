@@ -50,7 +50,6 @@ class Searchbar extends React.Component {
     }
   }
 
-
   render(){
     return (
       <div>
