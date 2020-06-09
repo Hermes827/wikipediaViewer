@@ -40,7 +40,6 @@ class Searchbar extends React.Component {
       apiData: api,
       didExecuteSearch: true
     })
-    console.log(this.state)
   }
 
   renderArticleContainer(){
