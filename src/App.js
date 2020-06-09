@@ -21,6 +21,9 @@ class App extends React.Component {
     (this.state.hasClickedButton === true) ? this.setState({hasClickedButton: false}) : this.setState({hasClickedButton: true})
   }
 
+  //turns out that the problem was that in the searchbar component I was writing "this.props.togglestate" instead of
+  //writing "this.props.toggle" which is the term I used when passing down the function "toggle={this.toggleState}"
+
   randomArticle(){
     window.open("https://en.wikipedia.org/wiki/Special:Random")
   }
