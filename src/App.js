@@ -11,10 +11,12 @@ class App extends React.Component {
     super()
     this.state = {
       hasClickedButton: false,
+      clickedSearch: false,
       array: []
     }
 
     this.toggleState = this.toggleState.bind(this)
+    this.toggleClickedSearch = this.toggleClickedSearch.bind(this)
   }
 
   toggleState(){
@@ -28,12 +30,26 @@ class App extends React.Component {
     window.open("https://en.wikipedia.org/wiki/Special:Random")
   }
 
+  renderH3(){
+    if(this.state.clickedSearch === false){
+      return(
+        <h3>Click icon to search</h3>
+      )
+    }
+  }
+
+  toggleClickedSearch(){
+    this.setState({
+      clickedSearch: true
+    })
+  }
+
   render(){
   return (
     <div className="App">
     <h3 onClick={this.randomArticle}>Click here for a random article</h3>
-    {(this.state.hasClickedButton ===true) ? <Searchbar toggle={this.toggleState}/> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
-    <h3>Click icon to search</h3>
+    {(this.state.hasClickedButton ===true) ? <Searchbar toggle={this.toggleState} clickedSearch={this.toggleClickedSearch}/> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
+    {this.renderH3()}
     </div>
   );
 }

@@ -35,6 +35,7 @@ class Searchbar extends React.Component {
   }
 
   changeState(api){
+    this.props.clickedSearch()
     this.setState({
       apiData: api,
       didExecuteSearch: true
