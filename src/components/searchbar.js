@@ -23,6 +23,7 @@ class Searchbar extends React.Component {
 
   executeSearch(e){
     e.preventDefault()
+    console.log("hello")
     //API not calling for some reason >> turns out I forgot to put in e.preventDefault
     fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${this.state.text}&exintro=&origin=*&prop=extracts%7Cpageimages&format=json`)
    .then(response => response.json())
@@ -36,6 +37,7 @@ class Searchbar extends React.Component {
 
   changeState(api){
     this.props.clickedSearch()
+    this.props.toggleClass()
     this.setState({
       apiData: api,
       didExecuteSearch: true

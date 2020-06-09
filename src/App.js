@@ -12,11 +12,13 @@ class App extends React.Component {
     this.state = {
       hasClickedButton: false,
       clickedSearch: false,
-      array: []
+      array: [],
+      searchBarClass: ""
     }
 
     this.toggleState = this.toggleState.bind(this)
     this.toggleClickedSearch = this.toggleClickedSearch.bind(this)
+    this.toggleSearchBarClass = this.toggleSearchBarClass.bind(this)
   }
 
   toggleState(){
@@ -44,12 +46,25 @@ class App extends React.Component {
     })
   }
 
+  toggleSearchBarClass(){
+    this.setState({
+      searchBarClass: "searchExecuted"
+    })
+  }
+
   render(){
   return (
     <div className="App">
+    <div className={this.state.searchBarClass}>
     <h3 onClick={this.randomArticle}>Click here for a random article</h3>
-    {(this.state.hasClickedButton ===true) ? <Searchbar toggle={this.toggleState} clickedSearch={this.toggleClickedSearch}/> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
+    {(this.state.hasClickedButton ===true) ? <Searchbar
+                                              toggle={this.toggleState}
+                                              clickedSearch={this.toggleClickedSearch}
+                                              toggleClass={this.toggleSearchBarClass}
+                                              /> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
     {this.renderH3()}
+    {console.log(this.state)}
+    </div>
     </div>
   );
 }
