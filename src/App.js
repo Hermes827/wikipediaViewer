@@ -13,12 +13,14 @@ class App extends React.Component {
       hasClickedButton: false,
       clickedSearch: false,
       array: [],
-      searchBarClass: ""
+      searchBarClass: "",
+      H3class: ""
     }
 
     this.toggleState = this.toggleState.bind(this)
     this.toggleClickedSearch = this.toggleClickedSearch.bind(this)
     this.toggleSearchBarClass = this.toggleSearchBarClass.bind(this)
+    this.renderH3 = this.renderH3.bind(this)
   }
 
   toggleState(){
@@ -52,6 +54,13 @@ class App extends React.Component {
     })
   }
 
+  // toggleH3Class(){
+  //   this.setState({
+  //     H3class: "H3gone"
+  //   })
+  //   console.log("h3")
+  // }
+
   render(){
   return (
     <div className="App">
@@ -62,8 +71,8 @@ class App extends React.Component {
                                               clickedSearch={this.toggleClickedSearch}
                                               toggleClass={this.toggleSearchBarClass}
                                               /> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
-    {this.renderH3()}
     {console.log(this.state)}
+    {this.renderH3()}
     </div>
     </div>
   );

@@ -38,6 +38,7 @@ class Searchbar extends React.Component {
   changeState(api){
     this.props.clickedSearch()
     this.props.toggleClass()
+    // this.props.toggleH3()
     this.setState({
       apiData: api,
       didExecuteSearch: true
