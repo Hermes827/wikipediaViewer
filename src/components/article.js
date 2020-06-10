@@ -12,11 +12,12 @@ class Article extends React.Component {
   }
 
   render(){
+    let data = this.props.info.extract.slice(0, 200)
+    data = data.replace(/<\/?[^>]+(>|$)/g, '');
     return (
       <div className="article" onClick={()=> this.openArticle(this.props.info.pageid)}>
       <h3 className="title">{this.props.info.title}</h3>
-      {this.props.info.extract}
-      {console.log(this.props.info)}
+      <div className="articleContent">{data}</div>
       </div>
     )
   }

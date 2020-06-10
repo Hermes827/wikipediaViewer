@@ -10,6 +10,7 @@ class Searchbar extends React.Component {
       apiData: "",
       didExecuteSearch: false
     }
+    this.random = this.random.bind(this)
     this.captureText = this.captureText.bind(this)
     this.executeSearch = this.executeSearch.bind(this)
   }
@@ -53,12 +54,18 @@ class Searchbar extends React.Component {
     }
   }
 
+  random(){
+    this.props.toggle()
+    this.props.clickedSearch1()
+    // this.props.clickedSearch()
+  }
+
   render(){
     return (
       <div>
       <form onSubmit={this.executeSearch}>
       <input type='text' name='text' value={this.state.text} onChange={this.captureText}/>
-      <button type="button" onClick={this.props.toggle}>cancel</button>
+      <button type="button" onClick={this.random}>cancel</button>
       </form>
       {this.renderArticleContainer()}
       </div>

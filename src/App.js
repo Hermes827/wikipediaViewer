@@ -19,6 +19,7 @@ class App extends React.Component {
 
     this.toggleState = this.toggleState.bind(this)
     this.toggleClickedSearch = this.toggleClickedSearch.bind(this)
+    this.toggleClickedSearch1 = this.toggleClickedSearch1.bind(this)
     this.toggleSearchBarClass = this.toggleSearchBarClass.bind(this)
     this.renderH3 = this.renderH3.bind(this)
   }
@@ -48,6 +49,13 @@ class App extends React.Component {
     })
   }
 
+  toggleClickedSearch1(){
+    this.setState({
+      clickedSearch: false,
+      searchBarClass: ""
+    })
+  }
+
   toggleSearchBarClass(){
     this.setState({
       searchBarClass: "searchBox"
@@ -69,6 +77,7 @@ class App extends React.Component {
     {(this.state.hasClickedButton ===true) ? <Searchbar
                                               toggle={this.toggleState}
                                               clickedSearch={this.toggleClickedSearch}
+                                              clickedSearch1={this.toggleClickedSearch1}
                                               toggleSearchBarClass={this.toggleSearchBarClass}
                                               /> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
     </div>
