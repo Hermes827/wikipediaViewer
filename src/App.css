@@ -59,3 +59,8 @@
 /* .H3gone {
   visibility: hidden;
 } */
+
+.searchBox {
+  position: relative;
+  top: -15em;
+}

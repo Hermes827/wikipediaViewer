@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import glass from './pictures/glass.svg.png'
 import Searchbar from './components/searchbar.js'
-const wikiAPI = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%27New_England_Patriots%27"
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
 
@@ -50,7 +50,7 @@ class App extends React.Component {
 
   toggleSearchBarClass(){
     this.setState({
-      searchBarClass: "searchExecuted"
+      searchBarClass: "searchBox"
     })
   }
 
@@ -69,11 +69,12 @@ class App extends React.Component {
     {(this.state.hasClickedButton ===true) ? <Searchbar
                                               toggle={this.toggleState}
                                               clickedSearch={this.toggleClickedSearch}
-                                              toggleClass={this.toggleSearchBarClass}
+                                              toggleSearchBarClass={this.toggleSearchBarClass}
                                               /> : <img className="glass" src={glass} onClick={this.toggleState}></img>}
+    </div>
     {console.log(this.state)}
     {this.renderH3()}
-    </div>
+
     </div>
   );
 }
