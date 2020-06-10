@@ -45,8 +45,12 @@
 }
 
 .article {
-  border-style: solid;
-  border-color: orange;
+color: black;
+background-color: #e3e2de;
+height: 7em;
+overflow: hidden;
+margin: 1em 0;
+padding: 0 1em;
 }
 
 .searchExecuted {
@@ -64,3 +68,14 @@
   position: relative;
   top: -15em;
 }
+
+.article {
+  text-align: left;
+}
+
+/* .articleContainer {
+  height: 50%;
+  border-style: solid;
+  border-color: orange;
+  margin-bottom: 300px;
+} */

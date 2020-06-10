@@ -10,7 +10,7 @@ class ArticleContainer extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="articleContainer">
       {
         Object.keys(this.props.apiData).map(key => {
           return(
