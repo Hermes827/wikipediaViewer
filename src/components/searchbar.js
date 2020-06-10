@@ -32,7 +32,9 @@ class Searchbar extends React.Component {
       //for some reason I couldn't setstate using the data, it turns out that its probably related
       //to the e.preventDefault, I found that by passing the data to a different function that im
       //now able to setstate with the data
-  })
+  }).catch(function(){
+        console.log("error");
+    });
   }
 
   changeState(api){
