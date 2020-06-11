@@ -35,6 +35,7 @@ class App extends React.Component {
     window.open("https://en.wikipedia.org/wiki/Special:Random")
   }
 
+
   renderH3(){
     if(this.state.clickedSearch === false){
       return(
